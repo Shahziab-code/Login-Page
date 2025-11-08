@@ -13,8 +13,9 @@ body {
 .mainContainer {
   margin: 20px;
   width: 70%;
-  height: 33rem;
+  height: 37rem;
   display: flex;
+  align-items: center;
   background-color: rgb(253, 248, 248);
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -23,25 +24,161 @@ body {
   border-radius: 10px;
 }
 
-.imageView{
+.imageView {
   width: 40%;
+  height: 100%;
+  position: relative;
 }
 
-.viewImg{
+.viewImg {
   width: 100%;
-  height: 33rem;
+  height: 37rem;
   border-radius: 10px 0 0 10px;
   border: none;
-  box-shadow: 0 0 0 0 /rgb(0 0 0 / 0.1), 0 0 0 0 rgb(0 0 0 / 0.1);
+  object-fit: cover;
+  filter: brightness(0.6);
 }
 
-.loginCard{
+.imageView h1 {
+  position: absolute;
+  top: 8px;
+  left: 2rem;
+  color: #ffffff;
+}
+
+.sampleText {
+  position: relative;
+  width: 19rem;
+  bottom: 10rem;
+  left: 27px;
+  color: white;
+  font-weight: 500;
+  font-size: 22px;
+}
+
+.person {
+  position: relative;
+  bottom: 10rem;
+  left: 29px;
+  color: white;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.Designation {
+  position: relative;
+  bottom: 10.5rem;
+  left: 29px;
+  color: white;
+  font-weight: 300;
+  font-size: 11px;
+}
+
+.loginView {
+  width: 60%;
+}
+
+.loginCard {
   margin: 20px;
   padding: 5px;
-  width: 21.5rem;
+  width: 100%;
   height: 30rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   border: none;
+}
+
+.loginCard h1 {
+  margin: 0px;
+}
+
+.loginCard p {
+  margin-bottom: 2rem;
+  font-size: 15px;
+  color: gray;
+}
+
+.inputField {
+  margin-bottom: 12px;
+  padding: 8px;
+  border-radius: 5px;
+  border-color: gray;
+  width: 15rem;
+  font-family: monospace, sans-serif;
+}
+
+.forgetLink {
+  display: flex;
+  justify-content: start;
+  width: 16rem;
+  margin-bottom: 2rem;
+  font-family: revert-layer;
+}
+
+.signBtn {
+  width: 16rem;
+  padding: 6px;
+  border-radius: 22px;
+  color: white;
+  background: #3628efd6;
+  border: none;
+  height: 2.2rem;
+  cursor: pointer;
+}
+
+.signBtn:hover {
+  background-color: #1a0cd8d6;
+  transition: all 10s step-start;
+}
+
+.googleBtn {
+  width: 16rem;
+  margin-bottom: 12px;
+  padding: 6px;
+  border-radius: 22px;
+  height: 2.2rem;
+  background-color: #e7e5e5;
+  border: none;
+  font-weight: bolder;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 8px 0;
+}
+
+.divider::before,
+.divider::after {
+  width: 81px;
+  content: " ";
+  flex: 1;
+  border-bottom: 1px solid #b5b2b2;
+}
+
+.divider:not(:empty)::before {
+  margin-right: 0.75em;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 0.75em;
+}
+
+.divider span {
+  color: #666;
+  font-weight: 500;
+}
+
+.sigUp {
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  gap: 5px;
+}
+
+.sigUp p {
+  height: 0px;
 }
