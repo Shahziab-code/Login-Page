@@ -1,0 +1,51 @@
+.DashContainer {
+  margin-top: 12px;
+  height: 38rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: rgb(224, 224, 224);
+}
+
+.content {
+  width: 65%;
+  height: 38rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 15px;
+  background-color: white;
+}
+
+.h2 {
+  font-weight: 500;
+  color: rgb(73, 189, 92);
+  margin: 0px;
+}
+
+.pTag {
+  color: rgb(131, 131, 131);
+  margin-bottom: 2rem;
+}
+
+.logoutBtn {
+  width: 16rem;
+  padding: 6px;
+  border-radius: 22px;
+  color: white;
+  background: #3628efd6;
+  font-weight: 600;
+  border: none;
+  height: 2.2rem;
+  cursor: pointer;
+}
+
+.logoutBtn:hover {
+  background-color: #dedcf3d6;
+  border: 2px solid #3628efd6;
+  color: #3628efd6;
+  transition: all ease-in-out;
+  font-weight: 600;
+}

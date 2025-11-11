@@ -19,10 +19,10 @@ const Login = () => {
     e.preventDefault();
 
     if (username === FAKE_USER.userName && password === FAKE_USER.password) {
-      localStorage.setItem("isLoggedIn", "true")
-      navigate("/dashborad")
+      localStorage.setItem("isLoggedIn", "true");
+      navigate("/Dashboard");
     } else {
-      setError("Invalid username or password")
+      setError("Invalid username or password");
     }
   }
 
@@ -39,28 +39,30 @@ const Login = () => {
             <p className="person">Someone</p>
             <p className="Designation">Director of something</p>
           </div>
-          <div className="loginView" onSubmit={handleLogin}>
+          <form className="loginView" onSubmit={handleLogin}>
             <div className="loginCard">
               <h1>login to Our Page</h1>
               <p>Sign-up to continue with all tools</p>
               <input
-                type="username"
-                value="username"
+                type="text"
+                value={username}
                 className="inputField"
                 placeholder="Enter User Name"
-                onChange={e => setUsername(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
               />
               <input
                 type="password"
-                value="password"
+                value={password}
                 className="inputField"
                 placeholder="Enter Password"
-                onChange={e => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <div className="forgetLink">
                 <a href="">Forget-Password</a>
               </div>
-              <button className="signBtn" type="submit">Sign In</button>
+              <button className="signBtn" type="submit">
+                Sign In
+              </button>
               <div className="divider">
                 <span>Or</span>
               </div>
@@ -70,7 +72,15 @@ const Login = () => {
                 <a href="">Sign-up</a>
               </div>
             </div>
-          </div>
+          </form>
+          {error && (
+            <div className="popupOverlay">
+              <div className="popupBox">
+                <p>{error}</p>
+                <button onClick={() => setError("")}>OK</button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>
