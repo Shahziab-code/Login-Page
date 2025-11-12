@@ -1,0 +1,243 @@
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Inconsolata:wght@200..900&family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap");
+
+.mainContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+.loginContainer {
+  width: 70%;
+  height: 95vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 7px 13px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.imageSide {
+  width: 40%;
+  height: 95vh;
+}
+
+.leftImage {
+  width: 100%;
+  height: 100%;
+  border: none;
+  object-fit: cover;
+  filter: brightness(0.6);
+  border-radius: 10px 0px 0px 10px;
+}
+
+.logo {
+  position: absolute;
+  top: 2rem;
+  left: 14rem;
+  font-size: 25px;
+  color: #f3f3f3;
+}
+
+.Director {
+  position: relative;
+  bottom: 8rem;
+  left: 1rem;
+  color: #dbdbdb;
+  font-size: 18px;
+  font-family: "Inconsolata";
+}
+
+.Company {
+  position: relative;
+  bottom: 8.5rem;
+  left: 1rem;
+  color: #c9c9c9;
+}
+
+.loginSide {
+  width: 54%;
+  height: 92%;
+  margin: 12px;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.inputForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+}
+
+.inputForm p {
+  margin: 0px 0px 2rem 0;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  color: #555454;
+  width: auto;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 12px;
+  width: auto;
+  height: auto;
+}
+
+.inputField {
+  width: 18rem;
+  height: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 20px;
+  font-family: monospace;
+}
+
+.inputForm a {
+  margin-right: 10.5rem;
+  margin-bottom: 3rem;
+  font-family: "Libertinus Serif", serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 19px;
+}
+
+.loginBtn {
+  padding: 10px;
+  width: 19rem;
+  height: 2.5rem;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: 900;
+  font-family: "Inconsolata", monospace;
+  background-color: #0362d3d6;
+  border: 2px solid #9b9b9bd6;
+  color: white;
+  border: none;
+}
+
+.loginBtn:hover {
+  background-color: white;
+  color: #0362d3d6;
+  border: 2px solid #0362d3d6;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 8px 0;
+}
+
+.divider::before,
+.divider::after {
+  width: 81px;
+  content: " ";
+  flex: 1;
+  border-bottom: 1px solid #b5b2b2;
+}
+
+.divider:not(:empty)::before {
+  margin-right: 0.75em;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 0.75em;
+}
+
+.divider span {
+  color: #666;
+  font-weight: 500;
+}
+
+.googleLogin {
+  margin-bottom: 15px;
+  padding: 10px;
+  width: 19rem;
+  height: 2.5rem;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 900;
+  font-family: "Inconsolata", monospace;
+  background-color: #ffffff;
+  color: rgb(67 67 67);
+  border: 2px solid #7f7e7e;
+}
+
+.googleLogin:hover {
+  background-color: #f0f0f0;
+  border: 2px solid #0362d3d6;
+  color: #0362d3d6;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+
+
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popupBox {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
+  animation: popupScale 0.25s ease;
+}
+
+.popupBox p {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
+.popupBox button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.popupBox button:hover {
+  background-color: #005ec2;
+}
+
+@keyframes popupScale {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
