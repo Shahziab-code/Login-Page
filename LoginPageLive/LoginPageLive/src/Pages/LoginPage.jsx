@@ -1,28 +1,48 @@
 import "./css/Login.css";
 import leftImage from "../assets/leftImage.jpg";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const Fake_User = {
     name: "admin",
-    password: "1234"
+    password: "1234",
   };
 
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const enteredUser = user.trim().toLowerCase();
+  const enteredPassword = password.trim().toLowerCase();
+
+  const realUser = Fake_User.name.trim().toLowerCase();
+  const realPassword = Fake_User.password.trim().toLowerCase();
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user === Fake_User.name && password === Fake_User.password);
-    
 
-    if (user === Fake_User.name && password === Fake_User.password) {
+    if (enteredUser === realUser && enteredPassword === realPassword) {
       localStorage.setItem("isLoggedIn", true);
-    } else {
-        setError("Invalid Credentials");
+      navigate("/Dashboard");
+    } else if (enteredUser !== realUser && enteredPassword !== realPassword) {
+      setError("Invalid Username and Password");
+      setUser("");
+      setPassword("");
+    } else if (enteredUser !== realUser) {
+      setError("Invalid Username");
+      setUser("");
+      setPassword("");
+    } else if (enteredPassword !== realPassword) {
+      setError("Invalid Password");
+      setUser("");
+      setPassword("");
     }
+
+    setUser("");
+    setPassword("");
   };
 
   return (
@@ -71,13 +91,13 @@ const LoginPage = () => {
               </button>
             </form>
             {error && (
-            <div className="popupOverlay">
-              <div className="popupBox">
-                <p>{error}</p>
-                <button onClick={() => setError("")}>OK</button>
+              <div className="popupOverlay">
+                <div className="popupBox">
+                  <p>{error}</p>
+                  <button onClick={() => setError("")}>OK</button>
+                </div>
               </div>
-            </div>
-          )}
+            )}
           </div>
         </div>
       </div>
