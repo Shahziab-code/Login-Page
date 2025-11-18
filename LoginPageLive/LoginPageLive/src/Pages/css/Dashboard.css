@@ -24,7 +24,8 @@
   margin-bottom: 4rem;
 }
 
-.back {
+.BlueBtn {
+  margin-bottom: 12px;
   padding: 10px 30px 10px 30px;
   font-size: 15px;
   font-weight: 900;
@@ -35,13 +36,13 @@
   box-shadow: 0 7px 13px rgba(0, 0, 0, 0.1);
 }
 
-.back:hover {
+.BlueBtn:hover {
   background-color: white;
   color: #2e6ae9;
   cursor: pointer;
 }
 
-.back:active {
+.BlueBtn:active {
   transform: scale(0.92);
   color: rgb(105, 105, 105);
 }

@@ -1,26 +1,41 @@
-import { useNavigate } from 'react-router-dom';
-import './css/Dashboard.css';
+import { useNavigate } from "react-router-dom";
+import "./css/Dashboard.css";
+import { useEffect } from "react";
 
 const Dashboard = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleLogout = () => {
-        localStorage.removeItem("isLoggedIn");
-        navigate(-1);
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (!isLoggedIn) {
+      console.log(isLoggedIn);
+      navigate("/");
     }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    navigate("/");
+  };
+
+  const handleTodoList = () => {
+    navigate("/TodoList");
+  }
+
   return (
     <>
-        <div className="Dashboard">
-            <div className="DashboardContainer">
-                <h1>Welcome to the Dashboard!</h1>
-                <p>You have successfully logged in.</p>
-                <button className='back' onClick={handleLogout}>
-                    Go Back
-                </button>
-            </div>
+      <div className="Dashboard">
+        <div className="DashboardContainer">
+          <h1>Welcome to the Dashboard!</h1>
+          <p>You have successfully logged in.</p>
+          <button className="BlueBtn" onClick={handleLogout}>
+            Logout
+          </button>
+          <button className="BlueBtn" onClick={handleTodoList}>Go to Todo List</button>
         </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

@@ -1,11 +1,12 @@
 import "./css/Login.css";
 import leftImage from "../assets/leftImage.jpg";
 import { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const Fake_User = {
-    name: "admin",
+    name: "user",
     password: "1234",
   };
 
@@ -20,6 +21,14 @@ const LoginPage = () => {
   const realPassword = Fake_User.password.trim().toLowerCase();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn) {
+      console.log(isLoggedIn);
+      navigate("/Dashboard");
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,7 +49,6 @@ const LoginPage = () => {
       setUser("");
       setPassword("");
     }
-
     setUser("");
     setPassword("");
   };
