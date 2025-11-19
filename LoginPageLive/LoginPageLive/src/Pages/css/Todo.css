@@ -18,3 +18,59 @@
   box-shadow: 0 7px 13px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+
+.todoInput {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todoTextInput {
+  width: 38rem;
+  height: 38px;
+  font-size: 20px;
+  color: gray;
+  font-weight: 700;
+  padding-left: 12px;
+  margin-bottom: 12px;
+  border-top: 1px solid #2e6ae9;
+  border-bottom: 1px solid #2e6ae9;
+  border-left: 1px solid #2e6ae9;
+  border-right: none;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.todoTextInput:focus {
+  outline: none;
+  border-color: rgb(197, 197, 197);
+}
+
+.todoInput button {
+  width: 7rem;
+  height: 2.6rem;
+  margin-bottom: 12px;
+  padding: 2px;
+  font-size: 15px;
+  font-weight: 900;
+  color: #2e6ae9;
+  background-color: #ffffff;
+  border: 1px solid #2e6ae9;
+  border-left: none;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.todoInput button:hover {
+  background-color: #ffffff;
+  color: gray;
+  cursor: pointer;
+}
+
+.todoInput button:active {
+  color: rgb(105, 105, 105);
+  border-top: 1px solid rgb(197, 197, 197);
+  border-bottom: 1px solid rgb(197, 197, 197);
+  border-right: 1px solid rgb(197, 197, 197);
+}
+
