@@ -1,9 +1,16 @@
 import { useState } from "react";
 import "./css/Todo.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTrash,
+  faPenToSquare,
+  faPlus,
+} from "@fortawesome/free-solid-svg-icons";
 
 const TodoList = () => {
   const [todo, setTodo] = useState("");
   const [tasks, setTasks] = useState([]);
+  const [expandedId, setExpandedId] = useState(null);
 
   const handleSubmit = (e) => {
     const nowTime = new Date().toLocaleTimeString([], {
@@ -21,7 +28,6 @@ const TodoList = () => {
         time: nowTime,
       },
     ]);
-    console.log("Task Added:", todo);
     setTodo("");
   };
 
@@ -40,8 +46,9 @@ const TodoList = () => {
   };
 
   const handleDelete = (id) => {
-    const filteredTasks = tasks.filter((item) => item.id !== id)
-  }
+    const filteredTasks = tasks.filter((item) => item.id !== id);
+    setTasks(filteredTasks);
+  };
 
   return (
     <div className="container">
@@ -64,11 +71,28 @@ const TodoList = () => {
       <div className="taskBox">
         {tasks.map((items, index) => (
           <div className="taskRaw" key={items.id}>
-            <p>{items.todo}</p>
-            <span>{items.time}</span>
+            <p
+              className={`taskText ${
+                expandedId === items.id ? "expanded" : ""
+              }`}
+              onClick={() =>
+                setExpandedId(expandedId === items.id ? null : items.id)
+              }
+            >
+              {items.todo}
+            </p>
+            <span className="taskTime">{items.time}</span>
             <div className="taskButtons">
-              <button onClick={() => handleEdit(items.id)}>Edit</button>
-              <button>Delete</button>
+              <FontAwesomeIcon
+                className="editBtn"
+                icon={faPenToSquare}
+                onClick={() => handleEdit(items.id)}
+              />
+              <FontAwesomeIcon
+                className="deleteBtn"
+                icon={faTrash}
+                onClick={() => handleDelete(items.id)}
+              />
             </div>
           </div>
         ))}

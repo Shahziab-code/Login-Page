@@ -80,7 +80,7 @@
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 15px; 
+  gap: 15px;
 }
 
 .taskRaw {
@@ -91,4 +91,41 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.taskText {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #484646;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 23rem;
+  cursor: pointer;
+}
+
+.taskText.expanded {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+.taskTime {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #484646;
+}
+
+.editBtn {
+  font-size: 22px;
+  cursor: pointer;
+  color: #4137cf;
+}
+
+.deleteBtn {
+  font-size: 20px;
+  cursor: pointer;
+  color: #4137cf;
 }
