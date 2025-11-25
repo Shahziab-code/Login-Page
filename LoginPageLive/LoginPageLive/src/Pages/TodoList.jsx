@@ -1,11 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./css/Todo.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTrash,
-  faPenToSquare,
-  faPlus,
-} from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 const TodoList = () => {
   const [todo, setTodo] = useState("");
@@ -30,6 +26,16 @@ const TodoList = () => {
     ]);
     setTodo("");
   };
+
+  useEffect(() => {
+    const savedTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+    if (savedTasks.length && tasks.length === 0) {
+      setTasks(savedTasks);
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleEdit = (id) => {
     const taskToEdit = tasks.find((item) => item.id === id);
