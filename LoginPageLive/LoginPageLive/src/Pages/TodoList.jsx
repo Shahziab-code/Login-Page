@@ -6,6 +6,8 @@ import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 const TodoList = () => {
   const [todo, setTodo] = useState("");
   const [tasks, setTasks] = useState([]);
+  const [editingId, setEditingId] = useState(null);
+  const [editText, setEditText] = useState("");
   const [expandedId, setExpandedId] = useState(null);
 
   const handleSubmit = (e) => {
@@ -33,22 +35,24 @@ const TodoList = () => {
       setTasks(savedTasks);
     }
   }, []);
+
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
   const handleEdit = (id) => {
     const taskToEdit = tasks.find((item) => item.id === id);
-    if (!taskToEdit) return;
+    setEditingId(id);
+    setEditText(taskToEdit.todo);
+  };
 
-    const newValue = prompt("Edit your task:", taskToEdit.todo);
-    if (!newValue) return;
-
+  const saveEdit = (id) => {
     const updatedTasks = tasks.map((item) =>
-      item.id === id ? { ...item, todo: newValue } : item
+      item.id === id ? { ...item, todo: editText } : item
     );
-
     setTasks(updatedTasks);
+    setEditingId(null);
+    setEditText("");
   };
 
   const handleDelete = (id) => {
@@ -70,13 +74,26 @@ const TodoList = () => {
             onChange={(e) => setTodo(e.target.value)}
             required
           />
-
           <button type="submit">Add Task</button>
         </form>
       </div>
       <div className="taskBox">
-        {tasks.map((items, index) => (
+        {tasks.map((items) => (
           <div className="taskRaw" key={items.id}>
+            {editingId === items.id ? (
+              
+                <input 
+                  className="editTaskInput"
+                  type="text"
+                  value={editText}
+                  onChange={(e) => setEditText(e.target.value)}
+                  onBlur={() => saveEdit(items.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") saveEdit(items.id)
+                  }}
+                  autoFocus
+                />              
+            ) : (
             <p
               className={`taskText ${
                 expandedId === items.id ? "expanded" : ""
@@ -84,9 +101,11 @@ const TodoList = () => {
               onClick={() =>
                 setExpandedId(expandedId === items.id ? null : items.id)
               }
+              onBlur={() => setExpandedId(items.id)}
             >
               {items.todo}
             </p>
+            )}
             <span className="taskTime">{items.time}</span>
             <div className="taskButtons">
               <FontAwesomeIcon

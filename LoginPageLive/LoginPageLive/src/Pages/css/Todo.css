@@ -129,3 +129,21 @@
   cursor: pointer;
   color: #4137cf;
 }
+
+.editTaskInput {
+  width: 23rem;
+  height: 30px;
+  font-size: 18px;
+  padding: 5px;
+  border: none;
+}
+
+.editTaskInput:focus {
+  outline: none;
+  border: 2px solid #a1a1a1;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #484646;
+}
