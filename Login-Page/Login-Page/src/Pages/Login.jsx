@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 import "./css/Login.css";
 
 const Login = () => {
@@ -17,35 +20,38 @@ const Login = () => {
 
   const realUser = FAKE_USER.name.trim().toLowerCase();
   const realPassword = FAKE_USER.password.trim().toLowerCase();
+  const [showPassword, setShowPassword] = useState(false);
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const isLoggedIn = localStorage.getItem("userLoggedIn");
     if (isLoggedIn) {
       console.log(isLoggedIn);
       navigate("/Dashboard");
     }
   }, []);
 
+  const Inputref = useRef(null);
+
+  const focusInput = (e) => {
+    if (condition) {
+      
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (enteredUser === realUser && enteredPassword === realPassword) {
-      localStorage.setItem("isLoggedIn", true);
+      localStorage.setItem("userLoggedIn", true);
       navigate("/Dashboard");
     } else if (enteredUser !== realUser && enteredPassword !== realPassword) {
-      setError("Invalid Username and Password")
-      setUser("");
-      setPassword("");
+      setError("Invalid Username and Password");
     } else if (enteredUser !== realUser) {
       setError("Invalid Username");
-      setUser("");
-      setPassword("");
     } else if (enteredPassword !== realPassword) {
       setError("Invalid Password");
-      setUser("");
-      setPassword("");
     }
     setUser("");
     setPassword("");
@@ -57,20 +63,25 @@ const Login = () => {
           <h2 className="loginHead">Login Page</h2>
           <form onSubmit={handleSubmit}>
             <div className="inputBox">
-              <input
-                className="loginInput"
-                type="text"
-                placeholder="Username"
-                onChange={(e) => setUser(e.target.value)}
-                required
-              />
-              <input
-                className="loginInput"
-                type="password"
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+              <div className="loginInput">
+                <input
+                  type="text"
+                  placeholder="Username"
+                  onChange={(e) => setUser(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="loginInput">
+                <input
+                 type={showPassword ? "password" : "text"}
+                  placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  onClick={() => setShowPassword(!showPassword)}
+                  required
+                />
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+              </div>
               <span className="forget">Froget Password?</span>
               <button className="loginBtn" type="submit">
                 Login
@@ -88,7 +99,7 @@ const Login = () => {
             <div className="popupOverlay">
               <div className="popupBox">
                 <p>{error}</p>
-                <button onClick={() => setError("")} >Ok</button>
+                <button onClick={() => setError("")}>Ok</button>
               </div>
             </div>
           )}

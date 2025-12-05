@@ -6,7 +6,7 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const isLoggedIn = localStorage.getItem("userLoggedIn");
     if (!isLoggedIn) {
       console.log(isLoggedIn);
       navigate("/");
@@ -14,7 +14,7 @@ export default function Dashboard() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userLoggedIn");
     navigate("/");
   };
 

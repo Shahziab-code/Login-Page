@@ -73,3 +73,35 @@
   font-size: 16px;
   font-weight: 700;
 }
+
+.todoItems {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todoItems input {
+  width: 15rem;
+  font-size: 15px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #a5a5a563;
+  color: white;
+}
+
+.taskText {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #f3f3f3;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 23rem;
+  cursor: pointer;
+}
